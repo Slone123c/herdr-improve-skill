@@ -1,0 +1,15 @@
+# Local plans, findings and execution evidence
+plans/
+advisor-plans/
+reports/
+# Credentials and local configuration
+.env
+.env.*
+*.pem
+*.key
+# Logs and build artifacts
+*.log
+.DS_Store
+__pycache__/
+node_modules/
+dist/
