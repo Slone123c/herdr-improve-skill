@@ -91,7 +91,7 @@ In the advisor session, use `/improve-hc` followed by a task in ordinary languag
 /improve-hc Continue unfinished work and check for leftover terminals
 ```
 
-The skill routes the request to reconnaissance, auditing, planning, execution, review, or reconciliation using the goal, context, and existing plans. An explicit implementation request proceeds through any necessary plan, hc execution, and independent review. A broad improvement goal starts with investigation rather than arbitrary edits. Limits such as “summary only,” “plan first,” and “do not implement” are preserved. A bare plan reference triggers reading/review, not automatic execution. Legacy shortcuts such as `quick`, `plan`, `execute`, and `reconcile` remain compatible.
+The skill interprets the full meaning of the request together with conversation context and existing plans to choose reconnaissance, auditing, planning, execution, review, or reconciliation. Routing is semantic, not keyword matching. An explicit implementation request proceeds through any necessary plan, hc execution, and independent review. A broad improvement goal starts with investigation rather than arbitrary edits. Limits such as “summary only,” “plan first,” and “do not implement” are preserved. A bare plan reference triggers reading/review, not automatic execution. Legacy shortcuts such as `quick`, `plan`, `execute`, and `reconcile` remain available when deliberately invoked; their appearance in prose does not select an operation.
 
 Choose the advisor's agent/model when starting its session. Select child agents and models in natural language, by task type or individual plan:
 
