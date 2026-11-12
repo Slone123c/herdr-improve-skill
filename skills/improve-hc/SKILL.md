@@ -4,7 +4,7 @@ description: Turn a natural-language task, goal, issue, or plan reference into t
 license: MIT
 metadata:
   author: shadcn
-  version: "1.3.1"
+  version: "1.3.2"
   variant: hc
 ---
 
