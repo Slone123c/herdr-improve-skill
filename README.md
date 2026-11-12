@@ -28,7 +28,7 @@
 2. 准备至少一个可由 hc 交互启动的 agent CLI，并完成它自己的登录与模型配置。
 3. 使用支持 Agent Skills 的宿主。通过下面的 `npx` 命令安装还需要 Node.js 与 npm。
 
-### 使用 hc 派发 Coding Agents Skills CLI
+### 使用 Skills CLI
 
 ```sh
 npx skills add Slone123c/herdr-improve-skill --skill improve-hc
@@ -79,19 +79,21 @@ hc run --bg --name advisor --cwd "$PWD" agy
 hc attach advisor
 ```
 
-在顾问会话中调用技能：
+在顾问会话中，只需 `/improve-hc` 加一句任务描述，无需选择子命令：
 
 ```text
-/improve-hc quick
-/improve-hc security
-/improve-hc plan 为关键模块补充回归测试
-/improve-hc review-plan plans/001-example.md
-/improve-hc execute 001
-/improve-hc execute 001 003
-/improve-hc reconcile
+/improve-hc 总结这个项目的架构和主要业务流程
+/improve-hc 检查登录模块的安全风险
+/improve-hc 为缓存失效问题写一份计划，先不要改代码
+/improve-hc 看看上次的缓存计划是否清楚、现在能不能执行
+/improve-hc 按 003 计划完成修改并验证
+/improve-hc 修复重复提交造成订单重复的问题
+/improve-hc 继续上次未完成的任务，检查残留终端
 ```
 
-先从 `quick` 或一个小计划开始。顾问的 agent/model 在启动会话时选择；子任务可以通过自然语言按类型或单份计划指定：
+skill 会根据目标、上下文和已有计划，自行路由到摸底、审计、写计划、执行、审查或状态整理。明确要求实现时，会补齐必要计划后调用 hc 执行者并独立审查；模糊的改进目标先调查，不直接任意改代码。“只总结”“先写计划”“不要实现”等限制会保留；单独提到一个计划只会先读取、检查，不视为执行授权。原有 `quick`、`plan`、`execute`、`reconcile` 等写法仍兼容。
+
+顾问的 agent/model 在启动会话时选择；子任务可以通过自然语言按类型或单份计划指定：
 
 ```text
 审计使用我已有的 reviewer 模板。

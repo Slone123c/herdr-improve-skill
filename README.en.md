@@ -79,19 +79,21 @@ hc run --bg --name advisor --cwd "$PWD" agy
 hc attach advisor
 ```
 
-Invoke the skill in the advisor session:
+In the advisor session, use `/improve-hc` followed by a task in ordinary language. No subcommand selection is needed:
 
 ```text
-/improve-hc quick
-/improve-hc security
-/improve-hc plan Add regression coverage for a critical module
-/improve-hc review-plan plans/001-example.md
-/improve-hc execute 001
-/improve-hc execute 001 003
-/improve-hc reconcile
+/improve-hc Summarize this project's architecture and business flows
+/improve-hc Check the login module for security risks
+/improve-hc Write a plan for cache invalidation; do not implement yet
+/improve-hc Review the previous cache plan and check its readiness
+/improve-hc Carry out plan 003 and verify the result
+/improve-hc Fix duplicate orders caused by repeated submissions
+/improve-hc Continue unfinished work and check for leftover terminals
 ```
 
-Start with `quick` or a small plan. Choose the advisor's agent/model when starting its session. Select child agents and models in natural language, by task type or individual plan:
+The skill routes the request to reconnaissance, auditing, planning, execution, review, or reconciliation using the goal, context, and existing plans. An explicit implementation request proceeds through any necessary plan, hc execution, and independent review. A broad improvement goal starts with investigation rather than arbitrary edits. Limits such as “summary only,” “plan first,” and “do not implement” are preserved. A bare plan reference triggers reading/review, not automatic execution. Legacy shortcuts such as `quick`, `plan`, `execute`, and `reconcile` remain compatible.
+
+Choose the advisor's agent/model when starting its session. Select child agents and models in natural language, by task type or individual plan:
 
 ```text
 Use my existing reviewer template for audits.

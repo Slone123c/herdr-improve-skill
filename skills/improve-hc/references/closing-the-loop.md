@@ -138,7 +138,7 @@ Finish with a short report: what's verified done, what was refreshed, what's rej
 
 ## `--issues` — publish plans as GitHub issues
 
-Modifier on any planning invocation (`/improve-hc --issues`, `/improve-hc security --issues`). The flag is the user's authorization to create issues — never create them without it.
+Modifier on any planning invocation (`/improve-hc --issues`, `/improve-hc security --issues`), or an equally explicit natural-language request to publish plans as GitHub issues. Either is authorization to create issues; a request merely to plan, audit, or implement is not. The visibility and sensitive-content checks below still apply.
 
 1. Preflight: `gh auth status` succeeds and the repo has a GitHub remote. If either fails, write the plan files as normal and say why issues were skipped.
 2. Visibility check: `gh repo view --json visibility`. If the repo is **public**, warn the user that issues are publicly visible and get explicit confirmation before publishing any plan that describes a security vulnerability, credential location, or other sensitive finding.
